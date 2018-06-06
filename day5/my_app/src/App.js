@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Navbar, PageHeader, NavItem, Nav, Grid, Row, Col, Button } from "react-bootstrap";
+import { Navbar, PageHeader, NavItem, Nav, Grid, Row, Col, Button, ListGroup, ListGroupItem } from "react-bootstrap";
 
 class App extends Component {
   constructor() {
@@ -50,7 +50,7 @@ class App extends Component {
     return (
       <div className="App">
         <PageHeader>
-          React Simple To Do List
+          To Do <small>Simple to-do list in react</small>
         </PageHeader>
         <div>
           <form onSubmit={this.handleSubmit.bind(this)}>
@@ -59,11 +59,11 @@ class App extends Component {
             </label>
             <input type="submit" value="Add" />
           </form>
-          <ul>
+          <ListGroup>
             {listOfNames.map((name, i) => (
-              <li key={i}>{name}<Button onClick={this.handleDelete.bind(this, i)}>Delete</Button></li>
+              <ListGroupItem bsStyle="success" key={i}>{name}<Button onClick={this.handleDelete.bind(this, i)}>Delete</Button></ListGroupItem>
             ))}
-          </ul>
+          </ListGroup>
         </div>
       </div>
     );

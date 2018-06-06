@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Navbar, PageHeader, NavItem, Nav, Grid, Row, Col, Button } from "react-bootstrap";
 
 class App extends Component {
   constructor() {
@@ -8,15 +9,6 @@ class App extends Component {
       name: "",
       listOfNames: []
     }
-  }
-
-  getIndex(value, arr) {
-    for(var i = 0; i < arr.length; i++) {
-      if(arr[i] === value) {
-        return i;
-      }
-    }
-    return
   }
 
   handleChange(event) {
@@ -41,11 +33,9 @@ class App extends Component {
   }
 
   handleDelete(i, event){
-    console.log("this is the name in the handleDelete: ", i );
     let aListOfNames = this.state.listOfNames;
     var index = i;
     let updatedListOfNames = aListOfNames.filter((_, i) => i !== index);
-    console.log("this is the updatedListOfNames in the handleDelete: ", updatedListOfNames );
     this.setState({
       listOfNames: updatedListOfNames
     })
@@ -59,20 +49,19 @@ class App extends Component {
     const name = listOfNames.map((name, i) => (<li key={i}>{name}</li>));
     return (
       <div className="App">
-        <p className="App-intro">
+        <PageHeader>
           React Simple To Do List
-        </p>
+        </PageHeader>
         <div>
           <form onSubmit={this.handleSubmit.bind(this)}>
             <label>
-              To-Do:
               <input onChange={this.handleChange.bind(this)} type="text" name="name" ref="text"/>
             </label>
             <input type="submit" value="Add" />
           </form>
           <ul>
             {listOfNames.map((name, i) => (
-              <li key={i}>{name}<button onClick={this.handleDelete.bind(this, i)}>Delete</button></li>
+              <li key={i}>{name}<Button onClick={this.handleDelete.bind(this, i)}>Delete</Button></li>
             ))}
           </ul>
         </div>

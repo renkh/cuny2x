@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Navbar, PageHeader, NavItem, Nav, Grid, Row, Col, Button, ListGroup, ListGroupItem } from "react-bootstrap";
 
 class App extends Component {
   constructor() {
@@ -31,26 +32,38 @@ class App extends Component {
     console.log("this new list of names: ", this.state.listOfNames)
   }
 
+  handleDelete(i, event){
+    let aListOfNames = this.state.listOfNames;
+    var index = i;
+    let updatedListOfNames = aListOfNames.filter((_, i) => i !== index);
+    this.setState({
+      listOfNames: updatedListOfNames
+    })
+    let text = this.refs.text;
+    text.value = "";
+    console.log("this new list of names in handleDelete: ", this.state.listOfNames)
+  }
+
   render() {
     const listOfNames = this.state.listOfNames;
     const name = listOfNames.map((name, i) => (<li key={i}>{name}</li>));
-
     return (
       <div className="App">
-        <p className="App-intro">
-          Welcome to my React app!
-        </p>
+        <PageHeader>
+          To Do <small>Simple to-do list in react</small>
+        </PageHeader>
         <div>
           <form onSubmit={this.handleSubmit.bind(this)}>
             <label>
-              Name:
               <input onChange={this.handleChange.bind(this)} type="text" name="name" ref="text"/>
             </label>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Add" />
           </form>
-          <ul>
-            { (name) ? name: null }
-          </ul>
+          <ListGroup>
+            {listOfNames.map((name, i) => (
+              <ListGroupItem bsStyle="success" key={i}>{name}<Button onClick={this.handleDelete.bind(this, i)}>Delete</Button></ListGroupItem>
+            ))}
+          </ListGroup>
         </div>
       </div>
     );

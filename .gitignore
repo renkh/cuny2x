@@ -66,3 +66,6 @@ typings/
 
 # Serverless directories
 .serverless
+
+# api keys
+config.js

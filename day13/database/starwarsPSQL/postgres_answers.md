@@ -1,0 +1,15 @@
+select * from jedis;
+select * from jedis where lightsaber_color='red';
+delete from jedis where lightsaber_color='green';
+SELECT * FROM jedis;
+insert into jedis (name,lightsaber_color,years_training,tempted_by_dark_side) values ('the unknown','black','100','f');
+select * from jedis;
+update jedis set (name,lightsaber_color,years_training,tempted_by_dark_side) =  (name,lightsaber_color,years_training*2,tempted_by_dark_side) where lightsaber_color='blue';
+select * from jedis;
+delete from jedis where lightsaber_color='orange';
+update jedis set (name,lightsaber_color,years_training,tempted_by_dark_side) =  (name,lightsaber_color='blue',years_training*2,tempted_by_dark_side) where lightsaber_color='brown' or lightsaber_color='purple';
+select * from jedis;
+delete from jedis where years_training<20;
+select * from jedis;
+delete from jedis where name='the unknown';
+select * from jedis;

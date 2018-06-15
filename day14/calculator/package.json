@@ -1,0 +1,16 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test-init": "jasmine init",
+    "test": "jasmine"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine": "^3.1.0"
+  }
+}
